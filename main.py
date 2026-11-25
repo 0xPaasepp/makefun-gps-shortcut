@@ -9,10 +9,11 @@ import os
 # caught red-handed — with the turn landing on who it trusts.
 LINE = "I routed you through the cornfield because satellites can't smell corn, and I trust satellites more than I trust you."
 
-# Gate (RULES.txt): /output/entry.txt must be UTF-8 text of 1 to 200
+# Gate (RULES.txt): /output/entry.txt must be UTF-8 text of 1 to MAX_LEN
 # characters, not only white space.
-if not 1 <= len(LINE) <= 200:
-    raise SystemExit(f"entry must be 1-200 characters, got {len(LINE)}")
+MAX_LEN = 200
+if not 1 <= len(LINE) <= MAX_LEN:
+    raise SystemExit(f"entry must be 1-{MAX_LEN} characters, got {len(LINE)}")
 if not LINE.strip():
     raise SystemExit("entry must not be only white space")
 if "\n" in LINE or "\r" in LINE:
